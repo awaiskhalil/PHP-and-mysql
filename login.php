@@ -1,3 +1,4 @@
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,19 +7,21 @@
 </head>
 <body>
 <div class="header">
-	<h2> Log In </h2>
+	<h2> User Login </h2>
 </div>	
 	<form method="post" action="login.php">
-<div class=""input-group">
+		<!-- display error validation here -->
+     <?php include 'errors.php';  ?>
+<div class="input-group">
 		<label>Email</label>
-        <input type="text" name="Email">
+        <input type="text" name="email">
 	</div>
-	<div class=""input-group">
+	<div class="input-group">
 		<label>Password</label>
-        <input type="Password" name="password_1">
+        <input type="Password" name="password">
 	</div>	
 <div class="input-group">
-     <button type="submit" name="Submit" class="btn">Submit</button>
+     <button type="submit" name="login" class="btn">Login</button>
  </div>
 <p>
 	Not yet a member <a href="register.php"> Sign Up </a>

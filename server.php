@@ -1,5 +1,6 @@
 <?php
 
+    SESSION_start();
     $name = "";
     $email = "";
     $errors = array();
@@ -39,11 +40,47 @@
     	$sql = "INSERT INTO registration (name, email, password) 
     	               VALUES ('$name', '$email', '$password')";
 
-           if(!mysqli_query($db,$sql)){
-             die('Error:' . mysqli_error($db));
-            }
-         echo "new record added";   
+           mysqli_query($db,$sql);
+           $_SESSION['email'] = $email;
+           $_SESSION['success'] = "You are now logged in";
+           header('location: index.php'); // redirect to home page   
         }
+
     }
-mysqli_close($db);    
+
+    // login user from login page
+    if (isset($_POST['login'])) {
+        $email = mysqli_real_escape_string($db, $_POST['email']);
+        $password= mysqli_real_escape_string($db, $_POST['password']);
+
+    // ensure that form fields are filled properly 
+    if (empty($email)) {
+        array_push($errors, "Email is required");
+        }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+        }
+    if (count($errors) == 0) {
+        $password= md5($password); //encypt the password
+        $query = "SELECT * FROM registration WHERE email='$email' AND password='$password'";
+        $result = mysqli_query($db, $query);
+        if (mysqli_num_rows($result) == 1) {
+            // user log in
+           $_SESSION['email'] = $email;
+           $_SESSION['success'] = "You are now logged in";
+           header('location: index.php'); // redirect to home page
+        } else{
+            array_push($errors, "wrong username or password");
+           // header('location: login.php');
+        }
+      }
+    }
+
+  // logout session
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: login.php');
+    }
+	
 ?>
