@@ -34,19 +34,17 @@ form, .content {
     text-align: left;
     font-size: 14px;
     margin: 3px;
-
 }
+
 .input-group input {
 	height: 30px;
 	width: 90%;
 	padding: 5px 10px;
-	font-size: 16px;
+	font-size: 14px;
 	border-radius: 5px;
 	border: 1px solid grey;
 }
-input[type=text]:focus {
-    border: 1px;
-}
+
 .btn {
 	padding: 10px;
 	font-size: 15px;

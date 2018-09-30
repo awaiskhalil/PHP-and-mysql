@@ -69,10 +69,13 @@
            $_SESSION['email'] = $email;
            $_SESSION['success'] = "You are now logged in";
            header('location: index.php'); // redirect to home page
-        } else{
+        }
+
+         else{
             array_push($errors, "wrong username or password");
            // header('location: login.php');
         }
+
       }
     }
 
