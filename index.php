@@ -4,7 +4,6 @@
     	header('location: login.php');
     }
 ?>
-<?php include('contact.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +16,7 @@
 <div class="header">
 	<h2> Phone Directory Management System </h2>
 </div>
-<form method="post" action="add_phone.php">
+<form method="post" action="server.php">
       <!-- display error validation here -->
      <?php include 'errors.php';  ?>	
      
@@ -42,8 +41,9 @@
         </div>
 
        <div class="input-group"> <label>Phone No</label>
-        <input type="text" name="phone_no">
+        <input type="number" name="phone_no">
        </div>
+       
 
       <div class="input-group">
         <button type="save" name="add_phone" class="btn">Add Contact</button>

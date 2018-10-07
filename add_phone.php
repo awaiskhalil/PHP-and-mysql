@@ -21,11 +21,11 @@
 
            mysqli_query($db,$sql);
            header('location: index.php'); // redirect to home page   
-  if ($db->mysqli_query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $db->error;
-    } 
+  // if ($db->mysqli_query($sql) == TRUE) {
+  //      echo "New record created successfully";
+  //  } else {
+  //      echo "Error: " . $sql . "<br>" . $db->error;
+  //  } 
         }
     
   }
